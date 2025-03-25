@@ -1,39 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
-
-class MarkdownScreen extends StatefulWidget {
-  const MarkdownScreen({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MarkdownScreen> createState() => _MarkdownScreenState();
-}
-
-class _MarkdownScreenState extends State<MarkdownScreen> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color(0xFFEB2327),
-        title: Text(widget.title, style: const TextStyle(color: Colors.white)),
-      ),
-      backgroundColor: Colors.white,
-      body: Padding(
-        padding: const EdgeInsets.all(22.0),
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: MarkdownBody(
-            data: """                    
-# Enhancing Privacy and Robustness in Federated Random Forests 
+# Enhancing Privacy and Robustness in Federated Random Forests
 
 
 ## Introduction
@@ -69,7 +34,7 @@ Input:
 G : the subset of decision trees to be updated by the client
 1. for each t in G
 2. Randomly sample the client's training data with replacement to
-produce Z
+   produce Z
 3. Send mathbf{Z} from the root node of t down to the child nodes according to the partitioning condition of each node
 4. At each leaf node of t, perform the following until the data at the node contains instances of only one class or a predefined tree depth is reached
 5. quad Out of the N^{prime} features randomly selected from the total of N features in the dataset, select the feature and a split value that obtains the highest information gain to split on
@@ -143,29 +108,4 @@ Key Experimental Parameters
 ## Future Work
 
 - Explore integration of differential privacy techniques to further strengthen privacy-preserving capabilities.
-* Integrate a minimum sample threshold at the leaf nodes as a stopping criterion during tree growth to prevent information leakage.            
-            """.replaceAll('\n\n', '\nㅤ\n'),
-            softLineBreak: true,
-            styleSheet: MarkdownStyleSheet(
-              p: const TextStyle(fontSize: 18.0),
-              // Set font size for paragraphs
-              h1: const TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
-              h2: const TextStyle(fontSize: 26.0, fontWeight: FontWeight.bold),
-              h3: const TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold),
-              code: TextStyle(
-                fontSize: 16.0,
-                backgroundColor: Colors.grey[200],
-              ),
-            ),
-          ),
-        ),
-      ),
-
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
-  }
-}
+* Integrate a minimum sample threshold at the leaf nodes as a stopping criterion during tree growth to prevent information leakage.

@@ -1,6 +1,5 @@
-import 'package:first_app/screens/markdown_screen.dart';
+import 'package:first_app/ui/markdown/markdown_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
 
 void main() {
   runApp(const MyApp());
