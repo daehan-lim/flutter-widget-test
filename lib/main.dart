@@ -1,4 +1,3 @@
-import 'package:first_app/ui/test_image.dart';
 import 'package:first_app/ui/test_store.dart';
 import 'package:flutter/material.dart';
 

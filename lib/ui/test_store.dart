@@ -23,8 +23,8 @@ class StorePage extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 300, width: 80, child: Image.asset("assets/bag.jpg", fit: BoxFit.contain)),
-          Flexible(child: Image.asset("assets/shoes.jpg", fit: BoxFit.cover)),
+          Expanded(child: Image.asset("assets/bag.jpg", fit: BoxFit.cover)),
+          Expanded(child: Image.asset("assets/shoes.jpg", fit: BoxFit.cover)),
         ],
       ),
     )); // <- base UI
