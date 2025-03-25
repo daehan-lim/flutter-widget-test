@@ -1,4 +1,4 @@
-import 'package:first_app/ui/markdown/markdown_screen.dart';
+import 'package:first_app/ui/test_image.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const MarkdownScreen(title: 'Markdown Viewer'),
+      home: const ImageDisplayer(),
     );
   }
 }
