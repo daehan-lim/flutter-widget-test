@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'NotoSansKR'
       ),
       debugShowCheckedModeBanner: false,
-      home: const RecipePage(),
+      home: const ImageDisplayer(),
     );
   }
 }
