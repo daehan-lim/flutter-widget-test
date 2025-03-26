@@ -1,5 +1,6 @@
-import 'package:first_app/ui/test_image.dart';
-import 'package:first_app/ui/test_store.dart';
+import 'package:first_app/ui/image_displayer.dart';
+import 'package:first_app/ui/recipe/recipe_page.dart';
+import 'package:first_app/ui/store_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,11 +15,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'My First Flutter App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
+        // colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
         useMaterial3: true,
+        fontFamily: 'NotoSansKR'
       ),
       debugShowCheckedModeBanner: false,
-      home: const ImageDisplayer(),
+      home: const RecipePage(),
     );
   }
 }
