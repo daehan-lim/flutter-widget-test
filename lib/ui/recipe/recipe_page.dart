@@ -13,32 +13,18 @@ class RecipePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('AppBar Demo'),
         actions: [
-          IconButton(
-            icon: const Icon(CupertinoIcons.heart, color: Colors.pink,),
-            tooltip: 'Show Snackbar',
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('This is a snackbar')),
-              );
-            },
+          Icon(
+            CupertinoIcons.search, // Using Cupertino icon (쿠퍼티노 아이콘 사용)
+            color: Colors.black,
           ),
-          IconButton(
-            icon: const Icon(CupertinoIcons.search, color: Colors.pink,),
-            tooltip: 'Show Snackbar',
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('This is a snackbar')),
-              );
-            },
+          SizedBox(width: 15),
+          Icon(
+            CupertinoIcons.heart,
+            color: Colors.redAccent,
           ),
-          IconButton(
-            icon: const Icon(Icons.navigate_next),
-            tooltip: 'Go to the next page',
-            onPressed: () {},
-          ),
+          SizedBox(width: 15),
         ],
-      )
-      ,
+      ),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
