@@ -1,3 +1,4 @@
+import 'package:first_app/ui/test_image.dart';
 import 'package:first_app/ui/test_store.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const StorePage(),
+      home: const ImageDisplayer(),
     );
   }
 }
