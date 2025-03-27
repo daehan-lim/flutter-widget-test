@@ -11,7 +11,7 @@ class RecipePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('AppBar Demo'),
+        // title: const Text('AppBar Demo'),
         actions: [
           Icon(
             CupertinoIcons.search, // Using Cupertino icon (쿠퍼티노 아이콘 사용)
@@ -28,8 +28,7 @@ class RecipePage extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: ListView(
             children: [
               RecipeTitle(),
               RecipeMenu(),
