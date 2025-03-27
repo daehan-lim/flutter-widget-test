@@ -1,3 +1,4 @@
+import 'package:first_app/ui/containers.dart';
 import 'package:first_app/ui/image_displayer.dart';
 import 'package:first_app/ui/recipe/recipe_page.dart';
 import 'package:first_app/ui/store_page.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'NotoSansKR'
       ),
       debugShowCheckedModeBanner: false,
-      home: const ImageDisplayer(),
+      home: const Containers(),
     );
   }
 }
