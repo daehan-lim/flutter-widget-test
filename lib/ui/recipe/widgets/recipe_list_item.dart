@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 class RecipeListItem extends StatelessWidget {
   const RecipeListItem(this.assetName, this.title, {super.key});
+
   /// image name without extension
   final String assetName;
+
   /// e.g., "Coffee", "Burger"
   final String title;
 
@@ -14,7 +16,13 @@ class RecipeListItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.asset('assets/$assetName.jpg'),
+          AspectRatio(
+            aspectRatio: 2 / 1,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Image.asset('assets/$assetName.jpg', fit: BoxFit.cover),
+            ),
+          ),
           Text('Made $title', style: TextStyle(fontSize: 20)),
           Text(
             // You can embed variables in a string using $variableName

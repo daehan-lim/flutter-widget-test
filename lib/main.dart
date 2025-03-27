@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'NotoSansKR'
       ),
       debugShowCheckedModeBanner: false,
-      home: TestAspectRatio(),
+      home: RecipePage(),
     );
   }
 }

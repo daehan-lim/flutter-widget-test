@@ -8,8 +8,21 @@ class ImageDisplayer extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Center(
-          child: Column(
+          child: ListView(
             children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(40),
+                  child: AspectRatio(
+                    aspectRatio: 2 / 1,
+                    child: Image.network(
+                      'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg',
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                ),
+              ),
               Container(
                 height: 200,
                 margin: EdgeInsets.all(20),
@@ -28,7 +41,7 @@ class ImageDisplayer extends StatelessWidget {
                       width: 7.0,
                     ),
                   ),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(40),
                 ),
               ),
               Container(
