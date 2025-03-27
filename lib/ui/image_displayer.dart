@@ -10,6 +10,12 @@ class ImageDisplayer extends StatelessWidget {
         child: Center(
           child: ListView(
             children: [
+              ListTile(
+                onTap: () {},
+                title: Text('Hello'),
+                leading: Icon(Icons.heart_broken),
+                trailing: Icon(Icons.ac_unit),
+              ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ClipRRect(
