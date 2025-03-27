@@ -5,23 +5,31 @@ class RecipeMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 20),
+    return const Padding(
+      padding: EdgeInsets.only(top: 20),
       child: Row(
         children: [
-          menuItem(Icons.food_bank, 'ALL'),
+          MenuItem(Icons.food_bank, 'ALL'),
           SizedBox(width: 25),
-          menuItem(Icons.coffee, 'Coffee'),
+          MenuItem(Icons.coffee, 'Coffee'),
           SizedBox(width: 25),
-          menuItem(Icons.fastfood, 'Burger'),
+          MenuItem(Icons.fastfood, 'Burger'),
           SizedBox(width: 25),
-          menuItem(Icons.local_pizza, 'Pizza'),
+          MenuItem(Icons.local_pizza, 'Pizza'),
         ],
       ),
     );
   }
+}
 
-  Container menuItem(IconData iconData, String text) {
+class MenuItem extends StatelessWidget {
+  final IconData icon;
+  final String label;
+
+  const MenuItem(this.icon, this.label, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       width: 60,
       height: 80,
@@ -32,10 +40,10 @@ class RecipeMenu extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(iconData, color: Colors.redAccent, size: 30),
-          SizedBox(height: 5),
+          Icon(icon, color: Colors.redAccent, size: 30),
+          const SizedBox(height: 5),
           Text(
-            text,
+            label,
             style: TextStyle(color: Colors.black87),
           ),
         ],
