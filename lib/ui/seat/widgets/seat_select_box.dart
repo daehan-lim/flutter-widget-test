@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 
 class SeatSelectBox extends StatelessWidget {
-  const SeatSelectBox({super.key});
+  final int? selectedRow;
+  final int? selectedCol;
+  final void Function(int rowNum, int colNum) onSelected;
+
+  const SeatSelectBox(
+    this.selectedRow,
+    this.selectedCol,
+    this.onSelected, {
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -9,21 +18,21 @@ class SeatSelectBox extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
+          const Text(
             'Screen',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           for (int i = 1; i <= 5; i++) ...[
-            SizedBox(height: 10),
-            SeatRow(i),
+            const SizedBox(height: 10),
+            SeatRow(i, selectedRow, selectedCol, onSelected),
           ],
-          SizedBox(height: 10),
-          Row(
+          const SizedBox(height: 10),
+          const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SeatInfo('Available', Colors.grey),
               SizedBox(width: 4),
-              SeatInfo('Selected', Colors.amber),
+              const SeatInfo('Selected', Colors.amber),
             ],
           ),
         ],
@@ -34,8 +43,17 @@ class SeatSelectBox extends StatelessWidget {
 
 class SeatRow extends StatelessWidget {
   final int rowNum;
+  final int? selectedRow;
+  final int? selectedCol;
+  final void Function(int rowNum, int colNum) onSelected;
 
-  const SeatRow(this.rowNum, {super.key});
+  const SeatRow(
+    this.rowNum,
+    this.selectedRow,
+    this.selectedCol,
+    this.onSelected, {
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -48,11 +66,15 @@ class SeatRow extends StatelessWidget {
             child: Center(
               child: Text(
                 '$rowNum',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ),
-          for (var i = 0; i < 10; i++) Seat(),
+          for (var i = 1; i <= 10; i++)
+            Seat(rowNum, i, selectedRow, selectedCol, onSelected),
         ],
       ),
     );
@@ -60,7 +82,20 @@ class SeatRow extends StatelessWidget {
 }
 
 class Seat extends StatelessWidget {
-  const Seat({super.key});
+  final int rowNum;
+  final int colNum;
+  final int? selectedRow;
+  final int? selectedCol;
+  final void Function(int rowNum, int colNum) onSelected;
+
+  const Seat(
+    this.rowNum,
+    this.colNum,
+    this.selectedRow,
+    this.selectedCol,
+    this.onSelected, {
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -69,10 +104,18 @@ class Seat extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 2),
         child: AspectRatio(
           aspectRatio: 1,
-          child: Container(
-            decoration: BoxDecoration(
-              color: Colors.grey,
-              borderRadius: BorderRadius.circular(10),
+          child: GestureDetector(
+            onTap: () {
+              onSelected(rowNum, colNum);
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                color:
+                    selectedRow == rowNum && selectedCol == colNum
+                        ? Colors.amber
+                        : Colors.grey,
+                borderRadius: BorderRadius.circular(10),
+              ),
             ),
           ),
         ),
@@ -92,7 +135,7 @@ class SeatInfo extends StatelessWidget {
     return Row(
       children: [
         Text(text, style: TextStyle(fontSize: 14)),
-        SizedBox(width: 4),
+        const SizedBox(width: 4),
         Container(
           width: 20,
           height: 20,

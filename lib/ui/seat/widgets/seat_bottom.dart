@@ -1,7 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SeatBottom extends StatelessWidget {
-  const SeatBottom({super.key});
+  final int? selectedRow;
+  final int? selectedCol;
+
+  const SeatBottom(this.selectedRow, this.selectedCol, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,19 +18,45 @@ class SeatBottom extends StatelessWidget {
       ),
       child: Column(
         children: [
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Text(
-            '선택된 좌석이 없습니다',
+            selectedRow == null && selectedCol == null
+                ? '선택된 좌석이 없습니다'
+                : '좌석 : $selectedRow - $selectedCol',
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           SizedBox(
             width: 200,
             height: 56,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                showCupertinoDialog(
+                  context: context,
+                  builder:
+                      (context) => CupertinoAlertDialog(
+                        title: Text("예매 하시겠습니까?"),
+                        actions: [
+                          CupertinoDialogAction(
+                            onPressed: () => Navigator.pop(context),
+                            child: Text(
+                              "취소",
+                              style: TextStyle(color: Colors.red),
+                            ),
+                          ),
+                          CupertinoDialogAction(
+                            onPressed: () => Navigator.pop(context),
+                            child: Text(
+                              "확인",
+                              style: TextStyle(color: Colors.blue),
+                            ),
+                          ),
+                        ],
+                      ),
+                );
+              },
               style: ElevatedButton.styleFrom(backgroundColor: Colors.amber),
-              child: Text(
+              child: const Text(
                 'Book now',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
