@@ -13,21 +13,22 @@ class SeatSelectBox extends StatelessWidget {
             'Screen',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(child: Text('1')),
-              seat(),
-              seat(),
-              seat(),
-              seat(),
-              seat(),
-              seat(),
-              seat(),
-              seat(),
-              seat(),
-              seat(),
-            ],
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Center(
+                    child: Text(
+                      '1',
+                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+                for (var i = 0; i < 10; i++) seat(),
+              ],
+            ),
           ),
         ],
       ),
@@ -43,6 +44,7 @@ class SeatSelectBox extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               color: Colors.grey,
+              borderRadius: BorderRadius.circular(10),
             ),
           ),
         ),
