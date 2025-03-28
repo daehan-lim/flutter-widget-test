@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+const message = 'This very long button here so you know';
+
 class TestButtons extends StatelessWidget {
   const TestButtons({super.key});
 
@@ -13,49 +15,51 @@ class TestButtons extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               ElevatedButton(
-                onPressed: () {
-                  showCupertinoDialog(
-                    context: context,
-                    builder:
-                        (context) => CupertinoAlertDialog(
-                          title: Text('Confirm exit'),
-                          content: Text('Are you sure you wish to exit?'),
-                          actions: [
-                            CupertinoDialogAction(
-                              isDestructiveAction: true,
-                              onPressed: () => Navigator.pop(context),
-                              child: Text('Cancel'),
-                            ),
-                            CupertinoDialogAction(
-                              isDefaultAction: true,
-                              onPressed: () => Navigator.pop(context),
-                              child: Text('OK'),
-                            ),
-                          ],
-                        ),
-                  );
-                },
+                onPressed: () => showDialog(context),
                 style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(horizontal: 90, vertical: 18),
+                  padding: EdgeInsets.symmetric(horizontal: 40, vertical: 18),
                   minimumSize: Size.zero,
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
-                child: Text('Hello'),
+                child: Text(message),
               ),
 
-              SizedBox(
-                width: MediaQuery.of(context).size.height * 0.24,
-                height: MediaQuery.of(context).size.width * 0.14,
-                child: ElevatedButton(onPressed: () {}, child: Text('Hello')),
+              Container(
+                constraints: BoxConstraints(minWidth: 200, minHeight: 56),
+                child: IntrinsicWidth(
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 12,
+                      ),
+                    ),
+                    child: Text(
+                      message,
+                      maxLines: 1,
+                      overflow: TextOverflow.visible,
+                      softWrap: false,
+                    ),
+                  ),
+                ),
               ),
 
+              // More common but can break into 2 lines if localization text bigger
               SizedBox(
                 width: 200,
                 height: 56,
-                child: ElevatedButton(onPressed: () {}, child: Text('Hello')),
+                child: ElevatedButton(onPressed: () {}, child: Text(message)),
               ),
 
-              ElevatedButton(onPressed: () {}, child: Text('Hello')),
+              //Rarely used
+              SizedBox(
+                width: MediaQuery.of(context).size.height * 0.24,
+                height: MediaQuery.of(context).size.width * 0.14,
+                child: ElevatedButton(onPressed: () {}, child: Text(message)),
+              ),
+
+              ElevatedButton(onPressed: () {}, child: Text(message)),
               IconButton(onPressed: () {}, icon: Icon(Icons.heart_broken)),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -66,17 +70,40 @@ class TestButtons extends StatelessWidget {
                 onPressed: () {},
                 child: Icon(Icons.ac_unit_outlined),
               ),
-              TextButton(onPressed: () {}, child: Text('Hello')),
-              OutlinedButton(onPressed: () {}, child: Text('Hello')),
+              TextButton(onPressed: () {}, child: Text(message)),
+              OutlinedButton(onPressed: () {}, child: Text(message)),
               OutlinedButton(
                 onPressed: () {},
                 child: Icon(Icons.ac_unit_outlined),
               ),
-              CupertinoButton(onPressed: () {}, child: Text('Hello')),
+              CupertinoButton(onPressed: () {}, child: Text(message)),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  void showDialog(BuildContext context) {
+    showCupertinoDialog(
+      context: context,
+      builder:
+          (context) => CupertinoAlertDialog(
+            title: Text('Confirm exit'),
+            content: Text('Are you sure you wish to exit?'),
+            actions: [
+              CupertinoDialogAction(
+                isDestructiveAction: true,
+                onPressed: () => Navigator.pop(context),
+                child: Text('Cancel'),
+              ),
+              CupertinoDialogAction(
+                isDefaultAction: true,
+                onPressed: () => Navigator.pop(context),
+                child: Text('OK'),
+              ),
+            ],
+          ),
     );
   }
 }
