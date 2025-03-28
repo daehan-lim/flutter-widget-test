@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'NotoSansKR'
       ),
       debugShowCheckedModeBanner: false,
-      home: SeatPage(),
+      home: StorePage(),
     );
   }
 }

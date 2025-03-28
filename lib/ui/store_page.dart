@@ -12,13 +12,14 @@ class StorePage extends StatelessWidget {
           const Padding(
             padding: EdgeInsets.all(25),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 TabText("Woman"),
-                Spacer(),
+                // Spacer(),
                 TabText("Kids"),
-                Spacer(flex: 1),
+                // Spacer(flex: 1),
                 TabText("Shoes"),
-                Spacer(),
+                // Spacer(),
                 TabText("Bag"),
               ],
             ),
