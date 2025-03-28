@@ -12,10 +12,31 @@ class TestButtons extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              IconButton(
+
+              ElevatedButton(
                 onPressed: () {},
-                icon: Icon(Icons.heart_broken),
+                style: ElevatedButton.styleFrom(
+                  padding: EdgeInsets.symmetric(horizontal: 90, vertical: 18),
+                  minimumSize: Size.zero,
+                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                ),
+                child: Text('Hello'),
               ),
+
+              SizedBox(
+                width: MediaQuery.of(context).size.height * 0.24,
+                height: MediaQuery.of(context).size.width * 0.14,
+                child: ElevatedButton(onPressed: () {}, child: Text('Hello')),
+              ),
+
+              SizedBox(
+                width: 200,
+                height: 56,
+                child: ElevatedButton(onPressed: () {}, child: Text('Hello')),
+              ),
+
+              ElevatedButton(onPressed: () {}, child: Text('Hello')),
+              IconButton(onPressed: () {}, icon: Icon(Icons.heart_broken)),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   padding: EdgeInsets.all(10),
@@ -25,10 +46,12 @@ class TestButtons extends StatelessWidget {
                 onPressed: () {},
                 child: Icon(Icons.ac_unit_outlined),
               ),
-              ElevatedButton(onPressed: () {}, child: Text('Hello')),
               TextButton(onPressed: () {}, child: Text('Hello')),
-              OutlinedButton(onPressed: (){}, child: Text('Hello')),
-              OutlinedButton(onPressed: (){}, child: Icon(Icons.ac_unit_outlined),),
+              OutlinedButton(onPressed: () {}, child: Text('Hello')),
+              OutlinedButton(
+                onPressed: () {},
+                child: Icon(Icons.ac_unit_outlined),
+              ),
               CupertinoButton(onPressed: () {}, child: Text('Hello')),
             ],
           ),
