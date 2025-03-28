@@ -5,7 +5,7 @@ class SeatSelectBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Expanded(
+    return Expanded(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -13,16 +13,10 @@ class SeatSelectBox extends StatelessWidget {
             'Screen',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: 10),
-          SeatRow(1),
-          SizedBox(height: 10),
-          SeatRow(2),
-          SizedBox(height: 10),
-          SeatRow(3),
-          SizedBox(height: 10),
-          SeatRow(4),
-          SizedBox(height: 10),
-          SeatRow(5),
+          for (int i = 1; i <= 5; i++) ...[
+            SizedBox(height: 10),
+            SeatRow(i),
+          ],
           SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
