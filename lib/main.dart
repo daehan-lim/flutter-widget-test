@@ -1,3 +1,4 @@
+import 'package:first_app/ui/navigation/test_first.dart';
 import 'package:first_app/ui/test_aspect_ratio.dart';
 import 'package:first_app/ui/containers.dart';
 import 'package:first_app/ui/image_displayer.dart';
@@ -6,6 +7,7 @@ import 'package:first_app/ui/seat/seat_page.dart';
 import 'package:first_app/ui/store_page.dart';
 import 'package:first_app/ui/test_list_view.dart';
 import 'package:first_app/ui/test_list_view_builder.dart';
+import 'package:first_app/ui/test_stack.dart';
 import 'package:first_app/ui/test_stateful.dart';
 import 'package:flutter/material.dart';
 
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'NotoSansKR'
       ),
       debugShowCheckedModeBanner: false,
-      home: StorePage(),
+      home: TestFirst(),
     );
   }
 }
