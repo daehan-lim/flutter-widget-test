@@ -10,7 +10,7 @@ class UserRepository {
     //
     // Here, we use Future.delayed to simulate
     // a 1-second server response time
-    await Future.delayed(const Duration(seconds: 1));
+    await Future.delayed(const Duration(microseconds: 1));
 
     // A JSON string simulating data received from the server
     String serverResponse = """
