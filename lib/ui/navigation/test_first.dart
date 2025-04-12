@@ -25,6 +25,13 @@ class TestFirst extends StatelessWidget {
               },
               child: Text('First screen', style: TextStyle(fontSize: 50)),
             ),
+            SizedBox(
+              width: 200,
+              height: 200,
+              child: CircularProgressIndicator(
+                value: 0.9,
+              ),
+            )
           ],
         ),
       ),
