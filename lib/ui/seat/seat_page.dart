@@ -1,6 +1,5 @@
 import 'package:first_app/ui/seat/widgets/seat_bottom.dart';
 import 'package:first_app/ui/seat/widgets/seat_select_box.dart';
-import 'package:first_app/utils/util.dart';
 import 'package:flutter/material.dart';
 
 class SeatPage extends StatefulWidget {

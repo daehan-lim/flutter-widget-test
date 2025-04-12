@@ -2,7 +2,7 @@ import 'package:first_app/ui/recipe/widgets/recipe_list_item.dart';
 import 'package:first_app/ui/recipe/widgets/recipe_menu.dart';
 import 'package:first_app/ui/recipe/widgets/recipe_title.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart' show CupertinoIcons, CupertinoAlertDialog;
+import 'package:flutter/cupertino.dart' show CupertinoIcons;
 
 class RecipePage extends StatelessWidget {
   const RecipePage({super.key});
