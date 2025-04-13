@@ -1,4 +1,6 @@
 import 'package:first_app/ui/riverpod/home_page.dart';
+import 'package:first_app/ui/test_form.dart';
+import 'package:first_app/ui/test_grid_view.dart';
 import 'package:flutter/material.dart';
 import 'package:first_app/ui/containers.dart';
 import 'package:first_app/ui/image_displayer.dart';
@@ -22,6 +24,8 @@ class NavigationTest extends StatelessWidget {
   Widget build(BuildContext context) {
     // List of all pages with their titles
     final pages = [
+      ('TestGridView', TestGridView()),
+      ('AdvancedSearchPage', AdvancedSearchPage()),
       ('HomePage Riverpod', HomePage()),
       ('Containers', Containers()),
       ('Image Displayer', ImageDisplayer()),

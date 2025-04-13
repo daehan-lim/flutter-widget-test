@@ -34,26 +34,29 @@ class HomePage extends StatelessWidget {
           // state updates
           // HomeState homeState = ref.read(homeViewModelProvider);
 
-          return Column(
-            children: [
-              Text('Name: ${homeState.user?.name ?? ""}'),
-              Text('Age: ${homeState.user?.name ?? ""}'),
-              Text('Data fetched at: ${homeState.fetchTime ?? ""}'),
-              GestureDetector(
-                onTap: () {
-                  // When directly accessing the ViewModel,
-                  // add `.notifier` to homeViewModelProvider
-                  //
-                  // Since the ViewModel itself won’t update,
-                  // use read
-                  HomeViewModel homeViewModel = ref.read(
-                    homeViewModelProvider.notifier,
-                  );
-                  homeViewModel.getUserInfo();
-                },
-                child: Text('Fetch Info'),
-              ),
-            ],
+          return Center(
+            child: Column(
+              children: [
+                Text('Name: ${homeState.user?.name ?? ""}'),
+                Text('Age: ${homeState.user?.name ?? ""}'),
+                if (homeState.fetchTime != null)
+                  Text('Data fetched at: ${homeState.fetchTime}'),
+                GestureDetector(
+                  onTap: () {
+                    // When directly accessing the ViewModel,
+                    // add `.notifier` to homeViewModelProvider
+                    //
+                    // Since the ViewModel itself won’t update,
+                    // use read
+                    HomeViewModel homeViewModel = ref.read(
+                      homeViewModelProvider.notifier,
+                    );
+                    homeViewModel.getUserInfo();
+                  },
+                  child: Text('Fetch Info'),
+                ),
+              ],
+            ),
           );
         },
       ),
