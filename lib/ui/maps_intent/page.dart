@@ -1,43 +1,167 @@
+import 'package:first_app/ui/maps_intent/maps_intent.dart';
 import 'package:flutter/material.dart';
 
-import 'maps_intent.dart';
-// Make sure you also import your map picker helper file
-// import 'path_to_showMapAppPicker_function.dart';
+class LocationModel {
+  final String title;
+  final String category;
+  final String roadAddress;
+
+  const LocationModel({
+    required this.title,
+    required this.category,
+    required this.roadAddress,
+  });
+}
+
+final sampleLocations = [
+  LocationModel(
+    title: '스타벅스 강남점',
+    category: '카페 > 커피전문점',
+    roadAddress: '서울 강남구 강남대로 396',
+  ),
+  LocationModel(
+    title: '올리브영 명동점',
+    category: '쇼핑 > 뷰티스토어',
+    roadAddress: '서울 중구 명동8길 27',
+  ),
+  LocationModel(
+    title: '파리바게뜨 잠실점',
+    category: '음식점 > 베이커리',
+    roadAddress: '서울 송파구 올림픽로 240',
+  ),
+];
 
 class PlaceListPage extends StatelessWidget {
   const PlaceListPage({super.key});
 
+  void openMap(String address) {
+    openLocationInMaps(address);
+  }
+
+  void navigateTo(String address) {
+    print('길찾기: $address');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Places')),
-      body: ListView(
-        children: [
-          ListTile(
-            title: const Text('Coex Mall'),
-            subtitle: const Text('Seoul, Gangnam-gu, Yeongdong-daero 513'),
-            trailing: const Icon(Icons.arrow_forward_ios),
-            onTap: () {
-              openLocationInMaps('Coex Mall Seoul');
-            },
+      backgroundColor: Colors.white, // iOS-style
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        foregroundColor: Colors.black,
+        title: const Text(
+          '장소 목록',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
           ),
-          ListTile(
-            title: const Text('Gyeongbokgung Palace'),
-            subtitle: const Text('161 Sajik-ro, Jongno-gu, Seoul'),
-            trailing: const Icon(Icons.arrow_forward_ios),
-            onTap: () {
-              openLocationInMaps('Gyeongbokgung Palace');
-            },
-          ),
-          ListTile(
-            title: const Text('Busan Station'),
-            subtitle: const Text('206 Jungang-daero, Dong-gu, Busan'),
-            trailing: const Icon(Icons.arrow_forward_ios),
-            onTap: () {
-              openLocationInMaps('Busan Station');
-            },
-          ),
-        ],
+        ),
+        centerTitle: true,
+      ),
+      body: ListView.separated(
+        padding: const EdgeInsets.all(16),
+        itemCount: sampleLocations.length,
+        separatorBuilder: (_, __) => const SizedBox(height: 12),
+        itemBuilder: (context, index) {
+          final location = sampleLocations[index];
+          return Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(color: Colors.grey.shade200),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.1),
+                  blurRadius: 6,
+                  offset: const Offset(0, 2),
+                ),
+              ],
+            ),
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  location.title,
+                  style: const TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black87,
+                  ),
+                ),
+                const SizedBox(height: 6),
+                Text(
+                  location.category,
+                  style: TextStyle(
+                    fontSize: 13,
+                    color: Colors.grey.shade600,
+                  ),
+                ),
+                const SizedBox(height: 2),
+                Row(
+                  children: [
+                    const Icon(Icons.location_on_outlined,
+                        size: 14, color: Colors.grey),
+                    const SizedBox(width: 4),
+                    Flexible(
+                      child: Text(
+                        location.roadAddress,
+                        style: TextStyle(
+                          fontSize: 13,
+                          color: Colors.grey.shade600,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 12),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    _actionButton(
+                      icon: Icons.map_outlined,
+                      label: '지도 보기',
+                      onTap: () => openMap(location.roadAddress),
+                    ),
+                    const SizedBox(width: 8),
+                    _actionButton(
+                      icon: Icons.directions_outlined,
+                      label: '길찾기',
+                      onTap: () => navigateTo(location.roadAddress),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _actionButton({
+    required IconData icon,
+    required String label,
+    required VoidCallback onTap,
+  }) {
+    return TextButton.icon(
+      onPressed: onTap,
+      icon: Icon(icon, size: 18, color: Colors.blueAccent),
+      label: Text(
+        label,
+        style: const TextStyle(
+          fontSize: 14,
+          color: Colors.blueAccent,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+      style: TextButton.styleFrom(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        backgroundColor: Colors.blue.withOpacity(0.05),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
       ),
     );
   }

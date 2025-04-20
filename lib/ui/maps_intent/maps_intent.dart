@@ -10,15 +10,16 @@ Future<void> openLocationInMaps(String queryAddress) async {
       'nmap://search?query=$encoded&appname=$appName',
     );
 
-    try {
+    if (await canLaunchUrl(naverUri)) {
       await launchUrl(naverUri, mode: LaunchMode.externalApplication);
-    } catch (e) {
-      print('Failed to open Naver Maps. Falling back to Apple Maps: $e');
+      print('opened in Naver Map');
+    } else {
+      print('Naver Map not available. Falling back to Apple Maps');
       final appleUri = Uri.parse('http://maps.apple.com/?q=$encoded');
-      try {
+      if (await canLaunchUrl(appleUri)) {
         await launchUrl(appleUri, mode: LaunchMode.externalApplication);
-      } catch (e2) {
-        print('Failed to open Apple Maps: $e2');
+      } else {
+        print('Failed to open Apple Maps');
       }
     }
   } else {
