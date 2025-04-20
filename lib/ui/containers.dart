@@ -8,8 +8,16 @@ class Containers extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Center(
-          child: Column(
+          child: ListView(
             children: [
+              AspectRatio(
+                aspectRatio: 1,
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey),
+                  ),
+                ),
+              ),
               Container(
                 height: 60,
                 margin: EdgeInsets.all(15),

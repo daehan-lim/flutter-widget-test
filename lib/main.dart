@@ -23,7 +23,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         // colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
         useMaterial3: true,
-        fontFamily: 'NotoSansKR'
+        // textTheme: const TextTheme(
+        //   bodyMedium: TextStyle(fontSize: 16), // 👈 default for most Text
+        // ), // sets text style for all texts
+        fontFamily: 'NotoSansKR',
+        // same as textTheme: GoogleFonts.notoSansKrTextTheme().copyWith(
+        //     bodyMedium: GoogleFonts.notoSansKr(fontSize: 17), // applies to default Text
+        //   )
       ),
       debugShowCheckedModeBanner: false,
       home: NavigationTest(),
