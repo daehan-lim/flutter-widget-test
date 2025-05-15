@@ -72,7 +72,7 @@ class PlaceListPage extends StatelessWidget {
               border: Border.all(color: Colors.grey.shade200),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.1),
+                  color: Colors.black.withValues(alpha: 0.1),
                   blurRadius: 6,
                   offset: const Offset(0, 2),
                 ),
@@ -85,7 +85,7 @@ class PlaceListPage extends StatelessWidget {
                 Text(
                   location.title,
                   style: const TextStyle(
-                    fontSize: 17,
+                    fontSize: 18,
                     fontWeight: FontWeight.w600,
                     color: Colors.black87,
                   ),
@@ -94,22 +94,22 @@ class PlaceListPage extends StatelessWidget {
                 Text(
                   location.category,
                   style: TextStyle(
-                    fontSize: 13,
-                    color: Colors.grey.shade600,
+                    fontSize: 15,
+                    color: Colors.black.withValues(alpha: 0.65),
                   ),
                 ),
-                const SizedBox(height: 2),
+                const SizedBox(height: 5),
                 Row(
                   children: [
-                    const Icon(Icons.location_on_outlined,
-                        size: 14, color: Colors.grey),
+                    Icon(Icons.location_on_outlined,
+                        size: 16, color: Colors.black.withValues(alpha: 0.8)),
                     const SizedBox(width: 4),
                     Flexible(
                       child: Text(
                         location.roadAddress,
                         style: TextStyle(
-                          fontSize: 13,
-                          color: Colors.grey.shade600,
+                          fontSize: 16,
+                          color: Colors.black.withValues(alpha: 0.8),
                         ),
                       ),
                     ),
@@ -158,7 +158,7 @@ class PlaceListPage extends StatelessWidget {
       ),
       style: TextButton.styleFrom(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-        backgroundColor: Colors.blue.withOpacity(0.05),
+        backgroundColor: Colors.blue.withValues(alpha: 0.05),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),

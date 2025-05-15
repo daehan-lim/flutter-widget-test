@@ -21,6 +21,8 @@ import 'package:first_app/ui/test_spinner.dart';
 import 'package:first_app/ui/test_stack.dart';
 import 'package:first_app/ui/test_stateful.dart';
 
+import '../animations/animation.dart';
+
 class NavigationTest extends StatelessWidget {
   const NavigationTest({super.key});
 
@@ -28,6 +30,7 @@ class NavigationTest extends StatelessWidget {
   Widget build(BuildContext context) {
     // List of all pages with their titles
     final pages = [
+      ('AnimatedAlignExmple', AnimatedAlignExmple()),
       ('PlaceListPage', PlaceListPage()),
       ('TestImagePicker', TestImagePicker()),
       ('PrettyTextFieldDemo', PrettyTextFieldDemo()),
