@@ -66,8 +66,7 @@ class _AdvancedSearchPageState extends State<AdvancedSearchPage> {
                         borderRadius: BorderRadius.circular(10),
                         borderSide: const BorderSide(color: Colors.red),
                       );
-                    }
-                    else if (states.contains(WidgetState.focused)) {
+                    } else if (states.contains(WidgetState.focused)) {
                       return OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                         borderSide: const BorderSide(color: Colors.black),
@@ -81,6 +80,34 @@ class _AdvancedSearchPageState extends State<AdvancedSearchPage> {
                   // filled: true,
                   // fillColor: Colors.grey[100],
                 ),
+                /*
+                          border: WidgetStateInputBorder.resolveWith((states) {
+            return switch (true) {
+              _ when states.contains(WidgetState.error) => OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(
+                    color: Colors.red[100]!,
+                    width: 2,
+                  ),
+                ),
+              _ when states.contains(WidgetState.focused) => OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: const BorderSide(
+                    color: Colors.grey,
+                    width: 2,
+                  ),
+                ),
+              // Default value
+              _ => OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(
+                    color: Colors.grey[300]!,
+                    width: 1,
+                  ),
+                ),
+            };
+          })
+                 */
                 maxLength: 120,
                 keyboardType: TextInputType.text,
                 textInputAction: TextInputAction.done,

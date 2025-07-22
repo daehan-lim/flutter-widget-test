@@ -1,3 +1,7 @@
+import 'package:first_app/ui/animations/animated_container.dart';
+import 'package:first_app/ui/animations/animated_opacity.dart';
+import 'package:first_app/ui/animations/animated_position.dart';
+import 'package:first_app/ui/animations/move_game.dart';
 import 'package:first_app/ui/maps_intent/page.dart';
 import 'package:first_app/ui/riverpod/home_page.dart';
 import 'package:first_app/ui/test_form.dart';
@@ -21,7 +25,8 @@ import 'package:first_app/ui/test_spinner.dart';
 import 'package:first_app/ui/test_stack.dart';
 import 'package:first_app/ui/test_stateful.dart';
 
-import '../animations/animation.dart';
+import '../animations/animated_align.dart';
+import '../animations/explicit_animation.dart';
 
 class NavigationTest extends StatelessWidget {
   const NavigationTest({super.key});
@@ -30,6 +35,11 @@ class NavigationTest extends StatelessWidget {
   Widget build(BuildContext context) {
     // List of all pages with their titles
     final pages = [
+      ('ExplicitAnimationExample', ExplicitAnimationExample()),
+      ('AnimatedPositionedExample', AnimatedPositionedExample()),
+      ('AnimatedOpacityExample', AnimatedOpacityExample()),
+      ('AnimatedContainerExmple', AnimatedContainerExmple()),
+      ('MoveGame', MoveGame()),
       ('AnimatedAlignExmple', AnimatedAlignExmple()),
       ('PlaceListPage', PlaceListPage()),
       ('TestImagePicker', TestImagePicker()),
